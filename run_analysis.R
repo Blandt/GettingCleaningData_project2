@@ -1,3 +1,4 @@
+run_analysis <- function() { 
 library(plyr);
 library(data.table)
 
@@ -54,4 +55,4 @@ files<-list.files(path_rf, recursive=TRUE)
 #write out the file
   write.table(DataTidy, file = "tidydata.txt",row.name=FALSE)
 
-
+}
