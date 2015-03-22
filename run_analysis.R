@@ -51,7 +51,7 @@ files<-list.files(path_rf, recursive=TRUE)
 
 #Aggregate meaningful tidy data
   DataTidy<-aggregate(. ~subject + activity, Data, mean)
-  DataTidy<-DataTidy[order(DataTidy$subject,DataTidy$activity),]
+  DataTidy<<-DataTidy[order(DataTidy$subject,DataTidy$activity),]
 #write out the file
   write.table(DataTidy, file = "tidydata.txt",row.name=FALSE)
 
