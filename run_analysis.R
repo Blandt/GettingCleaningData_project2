@@ -36,7 +36,7 @@ files<-list.files(path_rf, recursive=TRUE)
 #Measurements on the mean and standard deviation 
   subdataFeaturesNames<-dataFeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", dataFeaturesNames$V2)]
   selectedNames<-c(as.character(subdataFeaturesNames), "subject", "activity" )
-  Data<-subset(Data,select=selectedNames)
+  Data<<-subset(Data,select=selectedNames)
 
 #extract meaningful activity names from activity_labels.txt
   activityLabels <- read.table(file.path(path_rf, "activity_labels.txt"),header = FALSE)
@@ -50,8 +50,8 @@ files<-list.files(path_rf, recursive=TRUE)
   names(Data)<-gsub("BodyBody", "Body", names(Data))
 
 #Aggregate meaningful tidy data
-  DataTidy<-aggregate(. ~subject + activity, Data, mean)
-  DataTidy<<-DataTidy[order(DataTidy$subject,DataTidy$activity),]
+  Data2<-aggregate(. ~subject + activity, Data, mean)
+  Data2<<-Data2[order(Data2$subject,Data2$activity),]
 #write out the file
   write.table(DataTidy, file = "tidydata.txt",row.name=FALSE)
 
